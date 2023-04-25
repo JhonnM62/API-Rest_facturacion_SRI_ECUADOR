@@ -1,0 +1,70 @@
+{
+  "details": {
+    "razonSocial": "PAUL JARAMILLO",
+    "nombreComercial": "PAUL JARAMILLO",
+    "ruc": "0704870708001",
+    "direccion": "Enrique Guerrero Portilla OE1-34 AV. Galo Plaza Lasso",
+    "comprobante": "01"
+  },
+  "customer": {
+    "tipoDocumento": "05",
+    "id": "1004870232",
+    "razonSocial": "ANDRES FELIPE VILLARRAGA ARANGO",
+		"email":"andresf.villarragaa@gmail.com",
+		"number":"573002167901"
+  },
+  "tax": {
+    "codigoTax": "2",
+    "tarifa": "0",
+    "imponible": "9.95",
+    "valor": "0",
+    "moneda": "DOLAR",
+    "propina": "0.00"
+  },
+  "product": [
+    {
+      "iva": "2",
+      "codigos_impuestos": "0",
+      "tarifa": "0",
+      "code": "GBS199607",
+      "quantity": "1.00",
+      "description": "PRODUCTOS ELECTRONICOS",
+      "additional_details": "",
+      "unit_Price": "10",
+      "discount": "0.05"
+    },
+		{
+      "iva": "2",
+      "codigos_impuestos": "0",
+      "tarifa": "0",
+      "code": "GBS199607",
+      "quantity": "1.00",
+      "description": "PRODUCTOS ELECTRONICOS",
+      "additional_details": "",
+      "unit_Price": "10",
+      "discount": "0.05"
+    },
+		{
+      "iva": "2",
+      "codigos_impuestos": "0",
+      "tarifa": "0",
+      "code": "GBS199607",
+      "quantity": "1.00",
+      "description": "PRODUCTOS ELECTRONICOS",
+      "additional_details": "",
+      "unit_Price": "10",
+      "discount": "0.05"
+    },
+		{
+      "iva": "2",
+      "codigos_impuestos": "0",
+      "tarifa": "0",
+      "code": "GBS199607",
+      "quantity": "2.00",
+      "description": "PRODUCTOS ELECTRONICOS",
+      "additional_details": "",
+      "unit_Price": "10",
+      "discount": "0.05"
+    }
+  ]
+}

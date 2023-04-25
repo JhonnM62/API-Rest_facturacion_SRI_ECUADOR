@@ -1,0 +1,62 @@
+{
+  "details": {
+    "razonSocial": "PAUL JARAMILLO",
+    "nombreComercial": "PAUL JARAMILLO",
+    "ruc": "0704870708001",
+    "direccion": "Enrique Guerrero Portilla OE1-34 AV. Galo Plaza Lasso",
+    "comprobante": "07",
+    "periodo_fiscal":"04/2023"
+  },
+  "customer": {
+    "tipoDocumento": "05",
+    "id": "1004870232",
+    "razonSocial": "ANDRES FELIPE VILLARRAGA ARANGO",
+    "email":"andresf.villarragaa@gmail.com",
+		"number":"573002167901"
+  },
+  "tax": {
+    "codigoTax": "2",
+    "tarifa": "0",
+    "imponible": "9.95",
+    "valor": "0",
+    "moneda": "DOLAR",
+    "propina": "0.00"
+  },
+  "impuestos": [
+    {
+      "retener": "2",
+      "codigos_impuestos": "9",
+      "base_imponible": "6000",
+      "porcentaje":"10",
+      "porcentaje_value":"10"
+    },
+    {
+      "retener": "2",
+      "codigos_impuestos": "9",
+      "base_imponible": "5000",
+      "porcentaje":"10",
+      "porcentaje_value":"10"
+    },
+    {
+      "retener": "2",
+      "codigos_impuestos": "9",
+      "base_imponible": "7000",
+      "porcentaje":"10",
+      "porcentaje_value":"10"
+    },
+    {
+      "retener": "2",
+      "codigos_impuestos": "9",
+      "base_imponible": "8000",
+      "porcentaje":"10",
+      "porcentaje_value":"10"
+    },
+    {
+      "retener": "2",
+      "codigos_impuestos": "9",
+      "base_imponible": "1000",
+      "porcentaje":"10",
+      "porcentaje_value":"10"
+    }
+  ]
+}
