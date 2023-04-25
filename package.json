@@ -1,0 +1,46 @@
+{
+  "name": "api-rest_facturacion_sri_ecuador",
+  "version": "1.0.0",
+  "description": "API rest Factura Electronica (SRI)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AutoSystem",
+  "license": "ISC",
+  "dependencies": {
+    "@adiwajshing/baileys": "4.4.0",
+    "@bot-whatsapp/bot": "latest",
+    "@bot-whatsapp/cli": "latest",
+    "@bot-whatsapp/database": "latest",
+    "@bot-whatsapp/portal": "latest",
+    "@bot-whatsapp/provider": "latest",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "bufferjs": "^3.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "FileReader": "^0.10.2",
+    "handlebars": "^4.7.7",
+    "helmet": "^6.1.5",
+    "jsonwebtoken": "^9.0.0",
+    "mime-types": "2.1.35",
+    "moment": "^2.29.4",
+    "mongoose": "^7.0.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-forge": "^1.3.1",
+    "nodemailer": "^6.9.1",
+    "path": "^0.12.7",
+    "puppeteer": "^19.7.5",
+    "soap": "^1.0.0",
+    "wa-sticker-formatter": "4.3.2",
+    "xpath": "^0.0.32"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
