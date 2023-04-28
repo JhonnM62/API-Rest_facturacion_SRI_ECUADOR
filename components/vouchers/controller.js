@@ -15,7 +15,7 @@ const User = require("../login/src/models/User");
 
 /* Logic */
 
-const responseInvoice = async (data, req) => {
+const responseInvoice = async (data, req, res) => {
   try {
     /*console.log(
       "llegaron a controller xml:",
@@ -25,7 +25,6 @@ const responseInvoice = async (data, req) => {
       req.p12File
     );*/
     const SEC = generarSecuencial(req.serial.toString());
-    console.log("sec>>>", SEC);
 
     const [xml, key] = invoice(data, SEC);
     const singXml = await sing(xml, req.pfirma_digital, req.p12File);
@@ -61,7 +60,16 @@ const responseInvoice = async (data, req) => {
         const update = { $set: { serial: SEC } };
         const result = await User.updateOne(filter, update);
         console.log(`${result.modifiedCount} documento(s) modificado(s)`);
-        return singXml;
+
+        const responseObj = {
+          estado: status,
+          fechaAutorizacion: fechaAutorizacion,
+          ambiente: ambiente,
+          "ESTE CODIGO LO PUEDES CONSULTAR EN LA SRI": key,
+        };
+
+        res.status(200).json(responseObj);
+        return;
         /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
       } else console.log(authorize.RespuestaAutorizacionComprobante);
     }
@@ -72,14 +80,14 @@ const responseInvoice = async (data, req) => {
   }
 };
 
-const resposeWithholdings = async (data, pfirma_digital, serial, p12File) => {
+const resposeWithholdings = async (data, req) => {
   try {
-    const SEC = generarSecuencial(serial.toString());
+    const SEC = generarSecuencial(req.serial.toString());
 
     /* logic */
     const [xml, key] = withholdings(data, SEC);
 
-    const singXml = await sing(xml, pfirma_digital, p12File, 07);
+    const singXml = await sing(xml, req.pfirma_digital, req.p12File, 07);
 
     const validate = await VALIDATE(singXml);
     let { estado } = validate.RespuestaRecepcionComprobante;
@@ -108,11 +116,19 @@ const resposeWithholdings = async (data, pfirma_digital, serial, p12File) => {
         await pdfWithholdings(data, key, send);
         /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
 
-        const filter = { _id: verifyToken.id };
+        const filter = { _id: req.userId };
         const update = { $set: { serial: SEC } };
         const result = await User.updateOne(filter, update);
         console.log(`${result.modifiedCount} documento(s) modificado(s)`);
-        return singXml;
+        const responseObj = {
+          estado: status,
+          fechaAutorizacion: fechaAutorizacion,
+          ambiente: ambiente,
+          "ESTE CODIGO LO PUEDES CONSULTAR EN LA SRI": key,
+        };
+
+        res.status(200).json(responseObj);
+        return;
       } else
         console.log(
           authorize.RespuestaAutorizacionComprobante.autorizaciones.autorizacion
@@ -129,10 +145,10 @@ const resposeWithholdings = async (data, pfirma_digital, serial, p12File) => {
 const resposeGuides = async (data, req) => {
   try {
     const SEC = generarSecuencial(serial.toString());
-    await verifyToken(req, null, null);
+
     /* logic */
     const [xml, key] = guides(data, SEC);
-    const singXml = await sing(xml, pfirma_digital, p12File, 06);
+    const singXml = await sing(xml, req.pfirma_digital, req.p12File, 06);
 
     const validate = await VALIDATE(singXml);
     let { estado } = validate.RespuestaRecepcionComprobante;
@@ -162,11 +178,19 @@ const resposeGuides = async (data, req) => {
 
         /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
 
-        const filter = { _id: verifyToken.id };
+        const filter = { _id: req.userId };
         const update = { $set: { serial: SEC } };
         const result = await User.updateOne(filter, update);
         console.log(`${result.modifiedCount} documento(s) modificado(s)`);
-        return singXml;
+        const responseObj = {
+          estado: status,
+          fechaAutorizacion: fechaAutorizacion,
+          ambiente: ambiente,
+          "ESTE CODIGO LO PUEDES CONSULTAR EN LA SRI": key,
+        };
+
+        res.status(200).json(responseObj);
+        return;
       } else
         console.log(
           authorize.RespuestaAutorizacionComprobante.autorizaciones.autorizacion

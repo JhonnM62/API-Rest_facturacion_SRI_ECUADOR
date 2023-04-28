@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const user = "jhonnym62";
-const password = "WQiuRumQwQOvg3JA";
-const dbname = "SRI_FAC";
-const uri = `mongodb+srv://${user}:${password}@cluster0.mnysxnv.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+const uri = process.env.DB_HOST;
 
 main().catch((err) => console.log(err));
 

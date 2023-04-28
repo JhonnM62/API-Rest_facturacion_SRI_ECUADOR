@@ -244,22 +244,19 @@
             </div>
             <div class="details" style="border-radius: 5px 5px 0 0;">
                 <span>
-                    <b>Emisor: </b>JARAMILLO VACA ANDRES PAUL
+                    <b>Emisor: </b>{{ details.nombreComercial}}
                 </span>
                 <span>
-                    <b>RUC: </b>0704870708001
+                    <b>RUC: </b>{{details.ruc}}
                 </span>
                 <span>
-                    <b>Matriz: </b>Kennedy norte, mz 705, lot 9-11
+                    <b>Matriz: </b> {{details.direccion}}
                 </span>
                 <span>
-                    <b>Correo: </b>paulxtreme3@hotmail.com
+                    <b>Correo: </b> {{details.email}}
                 </span>
                 <span>
-                    <b>Teléfono: </b>0992468742
-                </span>
-                <span>
-                    <b>Teléfono: </b>0992468742
+                    <b>Teléfono: </b> {{details.phone1}}
                 </span>
                 <span>
                     <b>Obligado a llevar contabilidad: </b>NO
@@ -273,7 +270,7 @@
             <div>
                 <div class="margin"></div>
                 <div class="factura">
-                    <b>RETENCION:</b>
+                    <b>COMPROBANTE DE RETENCION:</b>
                     <b>No.{{serial}}</b>
                 </div>
                 <div class="details">
@@ -300,11 +297,10 @@
                 <div class="col-6">
                     <div class="details">
                         <span>
-                            <b>Razón Social: </b>Trionica Computación C LTDA
+                            <b>Razón Social: </b> {{details.razonSocial}}
                         </span>
                         <span>
-                            <b>Dirección: </b>Av. 25 de Junio y 7ma Avenida. Diagonal al Edificio del SRI; frente
-                            Edificio KREA PINT
+                            <b>Dirección: </b> {{details.direccion}}
                         </span>
                         <span>
                             <b>Fecha Emisión: </b>{{date}}
@@ -317,10 +313,10 @@
                             <b>RUC/CI: </b>{{ruc}}
                         </span>
                         <span>
-                            <b>Teléfono: </b>072-981171
+                            <b>Teléfono: </b>{{details.phone1}}
                         </span>
                         <span>
-                            <b>Correo: </b>triofacturacion@trionica.com.ec
+                            <b>Correo: </b>{{details.email}}1
                         </span>
 
                     </div>
