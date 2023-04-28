@@ -57,7 +57,7 @@ const responseInvoice = async (data, req) => {
         await pdfBill(data, key, send);
         /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
 
-        const filter = { _id: userId };
+        const filter = { _id: req.userId };
         const update = { $set: { serial: SEC } };
         const result = await User.updateOne(filter, update);
         console.log(`${result.modifiedCount} documento(s) modificado(s)`);
