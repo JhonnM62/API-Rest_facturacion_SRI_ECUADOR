@@ -1,3 +1,18 @@
-node_modules
-npm-debug.log
+FROM node:14
 
+COPY . /app
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+COPY .env .env
+
+# Expone los puertos que usa la aplicación
+EXPOSE 3000 4000
+
+CMD ["npm", "start"]
