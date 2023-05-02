@@ -54,7 +54,7 @@ const main = async () => {
 
   app.set("port", PORT || 4000);
   app.set("json spaces", 4);
-  app.listen(PORT, () => console.log(`http://localhost:${PORT1}`));
+  app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
   // Middlewares
   app.use(
