@@ -50,15 +50,15 @@ const main = async () => {
     });
   });
 
-  const PORT = 4000;
-  app.set("port", PORT || 4000);
+  const PORT = process.env.PORT;
+  app.set("port", PORT || process.env.PORT);
   app.set("json spaces", 4);
   app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
   // Middlewares
   app.use(
     cors({
-      // origin: "http://localhost:3000",
+      origin: `http://localhost:${PORT}`,
     })
   );
   app.use(helmet());
