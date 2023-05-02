@@ -50,15 +50,16 @@ const main = async () => {
     });
   });
 
-  const PORT = 4000;
-  app.set("port", PORT || 4000);
+  const PORT1 = process.env.PORT1;
+  const PORT2 = process.env.PORT2;
+  app.set("port", PORT1 || 4000);
   app.set("json spaces", 4);
-  app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+  app.listen(PORT1, () => console.log(`http://localhost:${PORT1}`));
 
   // Middlewares
   app.use(
     cors({
-      origin: "http://localhost:4000",
+      origin: `http://localhost:${PORT1}`,
     })
   );
   app.use(helmet());
@@ -66,7 +67,7 @@ const main = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 
-  QRPortalWeb();
+  QRPortalWeb({ port: PORT2 });
 };
 
 main();
