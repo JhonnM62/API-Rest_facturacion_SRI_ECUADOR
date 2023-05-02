@@ -58,7 +58,7 @@ const main = async () => {
   // Middlewares
   app.use(
     cors({
-      origin: "http://localhost:4000",
+      //origin: "http://localhost:4000",
     })
   );
   app.use(helmet());
