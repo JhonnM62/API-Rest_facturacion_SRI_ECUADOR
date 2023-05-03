@@ -6,7 +6,7 @@ const hbs = require("handlebars");
 const moment = require("moment");
 const Enviar_PDF = require("../api_whatsapp/controller");
 
-const pdfBill = async ({ product, details, customer }, cod, inf) => {
+const pdfBill = async ({ product, details, customer, tax }, cod, inf) => {
   //Name del pdf
   const pdfName = cod + "_doc.pdf";
 
@@ -37,9 +37,18 @@ const pdfBill = async ({ product, details, customer }, cod, inf) => {
   });
 
   //Calculos necesarios para la factura
-  const subtotal = totalValue(table);
-  const tax = (subtotal * 12) / 100;
-  const totalTax = parseFloat(subtotal) + parseFloat(tax);
+  let subtotal = totalValue(table);
+  let tax1 = 0;
+  let totalTax = parseFloat(subtotal);
+  console.log(">>>tax", tax.codigoPorcentaje);
+  if (tax.codigoPorcentaje == 0) {
+    tax1 = 0;
+    totalTax = parseFloat(subtotal);
+  } else if (tax.codigoPorcentaje == 2) {
+    tax1 = ((subtotal * 12) / 100).toFixed(2);
+    console.log("tax1", tax1);
+    totalTax = parseFloat(subtotal) + parseFloat(tax1);
+  }
 
   //Informacion para generacion del pdf
   const pdf = {
@@ -52,7 +61,7 @@ const pdfBill = async ({ product, details, customer }, cod, inf) => {
     customer,
     inf,
     subtotal,
-    tax: tax.toFixed(2),
+    tax: tax1,
     totalTax: totalTax.toFixed(2),
   };
 

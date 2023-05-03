@@ -25,17 +25,22 @@ const responseInvoice = async (data, req, res) => {
       req.p12File
     );*/
     const SEC = generarSecuencial(req.serial.toString());
+    /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
+
+    const filter = { _id: req.userId };
+    const update = { $set: { serial: SEC } };
+    const result = await User.updateOne(filter, update);
+    console.log(`${result.modifiedCount} documento(s) modificado(s)`);
 
     const [xml, key] = invoice(data, SEC);
     const singXml = await sing(xml, req.pfirma_digital, req.p12File);
-
     const validate = await VALIDATE(singXml);
     let { estado } = validate.RespuestaRecepcionComprobante;
     if (estado == "DEVUELTA") {
       const { mensaje } =
         validate.RespuestaRecepcionComprobante.comprobantes.comprobante
           .mensajes;
-      console.log(mensaje);
+      console.log("respuesta SRI", mensaje);
     } else {
       const authorize = await AUTHORIZE(key);
       const {
@@ -44,7 +49,7 @@ const responseInvoice = async (data, req, res) => {
         ambiente,
       } = authorize.RespuestaAutorizacionComprobante.autorizaciones
         .autorizacion;
-
+      console.log(">>>>error", AUTHORIZE);
       if (status == "AUTORIZADO") {
         /*  Generar pdf */
         const send = {
@@ -54,12 +59,6 @@ const responseInvoice = async (data, req, res) => {
         };
 
         await pdfBill(data, key, send);
-        /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
-
-        const filter = { _id: req.userId };
-        const update = { $set: { serial: SEC } };
-        const result = await User.updateOne(filter, update);
-        console.log(`${result.modifiedCount} documento(s) modificado(s)`);
 
         const responseObj = {
           estado: status,
@@ -182,7 +181,7 @@ const resposeGuides = async (data, req) => {
         const update = { $set: { serial: SEC } };
         const result = await User.updateOne(filter, update);
         console.log(`${result.modifiedCount} documento(s) modificado(s)`);
-        const responseObj = {
+        /*const responseObj = {
           estado: status,
           fechaAutorizacion: fechaAutorizacion,
           ambiente: ambiente,
@@ -190,7 +189,7 @@ const resposeGuides = async (data, req) => {
         };
 
         res.status(200).json(responseObj);
-        return;
+        */ return singXml;
       } else
         console.log(
           authorize.RespuestaAutorizacionComprobante.autorizaciones.autorizacion
