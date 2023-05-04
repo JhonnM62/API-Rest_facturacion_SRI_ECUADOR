@@ -4,18 +4,18 @@
     "nombreComercial": "PAUL JARAMILLO",
     "ruc": "0704870708001",
     "direccion": "Enrique Guerrero Portilla OE1-34 AV. Galo Plaza Lasso",
-    "envio":"Av. Eloy Alfaro 34 y Av. Libertad Esq",
+    "envio": "Av. Eloy Alfaro 34 y Av. Libertad Esq",
     "comprobante": "06"
   },
   "customer": {
     "ruc": "1796875790001",
     "tipoDocumento": "04",
     "razonSocial": "ANDRES FELIPE VILLARRAGA ARANGO",
-    "fechaIniTransporte":"23/04/2023",
-    "fechaFinTransporte":"27/04/2023",
-    "placa":"MCL0827",
-    "email":"andresf.villarragaa@gmail.com",
-		"number":"573002167901"
+    "fechaIniTransporte": "23/04/2023",
+    "fechaFinTransporte": "27/04/2023",
+    "placa": "MCL0827",
+    "email": "andresf.villarragaa@gmail.com",
+    "number": "573002167901"
   },
   "tax": {
     "codigoTax": "2",
@@ -31,7 +31,7 @@
       "razonSocial": "Andres Felipe Villarraga Arango",
       "direccion": "Intercambiador",
       "traslado": "Venta de Maquinaria de Impresion",
-      "detalles":[
+      "detalles": [
         {
           "code": "GBS199607",
           "quantity": "2",
@@ -49,7 +49,7 @@
       "razonSocial": "Andres Felipe Villarraga Arango",
       "direccion": "Intercambiador",
       "traslado": "Venta de Maquinaria de Impresion",
-      "detalles":[
+      "detalles": [
         {
           "code": "GBS199607",
           "quantity": "2",
@@ -67,7 +67,7 @@
       "razonSocial": "Andres Felipe Villarraga Arango",
       "direccion": "Intercambiador",
       "traslado": "Venta de Maquinaria de Impresion",
-      "detalles":[
+      "detalles": [
         {
           "code": "GBS199607",
           "quantity": "2",
