@@ -82,6 +82,10 @@ const responseInvoice = async (data, req, res) => {
 const resposeWithholdings = async (data, req) => {
   try {
     const SEC = generarSecuencial(req.serial.toString());
+    const filter = { _id: req.userId };
+    const update = { $set: { serial: SEC } };
+    const result = await User.updateOne(filter, update);
+    console.log(`${result.modifiedCount} documento(s) modificado(s)`);
 
     /* logic */
     const [xml, key] = withholdings(data, SEC);
@@ -115,10 +119,6 @@ const resposeWithholdings = async (data, req) => {
         await pdfWithholdings(data, key, send);
         /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
 
-        const filter = { _id: req.userId };
-        const update = { $set: { serial: SEC } };
-        const result = await User.updateOne(filter, update);
-        console.log(`${result.modifiedCount} documento(s) modificado(s)`);
         const responseObj = {
           estado: status,
           fechaAutorizacion: fechaAutorizacion,
@@ -144,6 +144,10 @@ const resposeWithholdings = async (data, req) => {
 const resposeGuides = async (data, req) => {
   try {
     const SEC = generarSecuencial(serial.toString());
+    const filter = { _id: req.userId };
+    const update = { $set: { serial: SEC } };
+    const result = await User.updateOne(filter, update);
+    console.log(`${result.modifiedCount} documento(s) modificado(s)`);
 
     /* logic */
     const [xml, key] = guides(data, SEC);
@@ -177,11 +181,7 @@ const resposeGuides = async (data, req) => {
 
         /* exito: guardar en la base de datos en nuevo secuencial se recomienda guardar tambien el key comprobante */
 
-        const filter = { _id: req.userId };
-        const update = { $set: { serial: SEC } };
-        const result = await User.updateOne(filter, update);
-        console.log(`${result.modifiedCount} documento(s) modificado(s)`);
-        /*const responseObj = {
+        const responseObj = {
           estado: status,
           fechaAutorizacion: fechaAutorizacion,
           ambiente: ambiente,
@@ -189,7 +189,7 @@ const resposeGuides = async (data, req) => {
         };
 
         res.status(200).json(responseObj);
-        */ return singXml;
+        return;
       } else
         console.log(
           authorize.RespuestaAutorizacionComprobante.autorizaciones.autorizacion
