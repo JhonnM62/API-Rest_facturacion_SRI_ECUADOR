@@ -1,6 +1,6 @@
 /* Generar el xml de la factura */
 /* Modules */
-const moment = require("moment");
+const moment = require("moment-timezone");
 const util = require("../util/util");
 
 const AMBIENTE = 1;
@@ -8,7 +8,8 @@ const AMBIENTE = 1;
 const invoice = (data, sec) => {
   const table = [];
 
-  const dete = moment().format("DD/MM/YYYY");
+  const dete = moment().tz("America/Guayaquil").format("DD/MM/YYYY");
+  console.log(">>>>hora", dete);
   const secuencial = sec;
   const key = util.accessKey(data, dete, secuencial);
 
